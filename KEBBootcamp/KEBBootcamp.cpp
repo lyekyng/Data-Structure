@@ -2,6 +2,7 @@
 #include<string>
 using namespace std;
 
+
 class myArray {
 private:
 	int* arr;
