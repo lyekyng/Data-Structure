@@ -1,0 +1,62 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+class myArray {
+private:
+	int* arr;
+	int size;
+public:
+	myArray(int capacity) {
+		size = capacity;
+		arr = new int[size];
+		cout << "array Index : ";
+		for (int i = 0; i < size; i++) {
+			cin >> arr[i];
+		}
+	}
+	void shift(int d) {
+		for (int j = 0; j < d; j++) {
+			int tmp;
+			tmp = arr[size - 1];
+			for (int i = size-1; i > 0; i--) {
+				arr[i] = arr[i - 1];
+			}
+			arr[0] = tmp;
+		}
+	}
+	void switchIndex (int i, int j) {
+		int tmp;
+		tmp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = tmp;
+	}
+	void print() {
+		for (int i = 0; i < size; i++) {
+			cout << arr[i] << " ";
+		}
+		cout << endl;
+	}
+};
+
+int main() {
+	int num, size, x, y;
+	string str;
+	cout << "Number of commands, size of array : ";
+	cin >> num >> size;
+	myArray arr(size);
+	for (int i = 0; i < num; i++) {
+		cin >> str;
+		if (str == "shift") {
+			cin >> x;
+			arr.shift(x);
+		}
+		else if (str == "print") {
+			arr.print();
+		}
+		else if (str == "switch") {
+			cin >> x >> y;
+			arr.switchIndex(x, y);
+		}
+	}
+}
